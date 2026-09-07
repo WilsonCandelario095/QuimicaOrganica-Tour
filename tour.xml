@@ -1,0 +1,173 @@
+﻿<krpano version="1.21" title="Virtual Tour">
+
+	<include url="skin/vtourskin.xml" />
+
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="true"
+	               maps_type="google"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               maps_loadonfirstuse="true"
+	               gyro="true"
+	               gyro_keeplookingdirection="false"
+	               webvr="true"
+	               webvr_keeplookingdirection="true"
+	               webvr_prev_next_hotspots="true"
+	               autotour="false"
+	               littleplanetintro="false"
+	               followmousecontrol="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext=""
+	               layout_width="100%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x2D3E50"
+	               design_bgalpha="0.8"
+	               design_bgborder="0"
+	               design_bgroundedge="1"
+	               design_bgshadow="0 4 10 0x000000 0.3"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="0"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+	               />
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+	
+
+	
+	<scene name="scene_cuarta" title="cuarta" onstart="" thumburl="panos/cuarta.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cuarta.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cuarta.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_primera" title="primera" onstart="" thumburl="panos/primera.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/primera.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/primera.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_quinta" title="quinta" onstart="" thumburl="panos/quinta.tiles/thumb.jpg" lat="18.48775000" lng="-69.96294444" alt="44.90" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/quinta.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/quinta.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_segunda" title="segunda" onstart="" thumburl="panos/segunda.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/segunda.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/segunda.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_septima" title="septima" onstart="" thumburl="panos/septima.tiles/thumb.jpg" lat="18.48791667" lng="-69.96283333" alt="26.50" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/septima.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/septima.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_sexta" title="sexta" onstart="" thumburl="panos/sexta.tiles/thumb.jpg" lat="18.48783333" lng="-69.96286111" alt="32.40" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/sexta.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/sexta.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_tercera" title="tercera" onstart="" thumburl="panos/tercera.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/tercera.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/tercera.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+
+</krpano>
