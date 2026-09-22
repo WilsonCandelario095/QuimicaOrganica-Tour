@@ -70,26 +70,11 @@
 	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
 	
 
-	
-	<scene name="scene_cuarta" title="cuarta" onstart="" thumburl="panos/cuarta.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/cuarta.tiles/preview.jpg" />
-
-		<image>
-			<cube url="panos/cuarta.tiles/pano_%s.jpg" />
-		</image>
-
-	</scene>
-
 	<scene name="scene_primera" title="primera" onstart="" thumburl="panos/primera.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<view hlookat="180.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
 		<preview url="panos/primera.tiles/preview.jpg" />
 
@@ -97,22 +82,18 @@
 			<cube url="panos/primera.tiles/pano_%s.jpg" />
 		</image>
 
-	</scene>
-
-	<scene name="scene_quinta" title="quinta" onstart="" thumburl="panos/quinta.tiles/thumb.jpg" lat="18.48775000" lng="-69.96294444" alt="44.90" heading="0.0">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/quinta.tiles/preview.jpg" />
-
-		<image>
-			<cube url="panos/quinta.tiles/pano_%s.jpg" />
-		</image>
+		<hotspot
+			name="spot1"
+			style="pisada"
+			url="images/pisada.png"
+			ath="180" 
+			atv="11.54342605462306"
+			linkedscene="scene_segunda"
+			fov="90"
+		/>
 
 	</scene>
-
+	
 	<scene name="scene_segunda" title="segunda" onstart="" thumburl="panos/segunda.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
@@ -123,34 +104,6 @@
 
 		<image>
 			<cube url="panos/segunda.tiles/pano_%s.jpg" />
-		</image>
-
-	</scene>
-
-	<scene name="scene_septima" title="septima" onstart="" thumburl="panos/septima.tiles/thumb.jpg" lat="18.48791667" lng="-69.96283333" alt="26.50" heading="0.0">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/septima.tiles/preview.jpg" />
-
-		<image>
-			<cube url="panos/septima.tiles/pano_%s.jpg" />
-		</image>
-
-	</scene>
-
-	<scene name="scene_sexta" title="sexta" onstart="" thumburl="panos/sexta.tiles/thumb.jpg" lat="18.48783333" lng="-69.96286111" alt="32.40" heading="0.0">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/sexta.tiles/preview.jpg" />
-
-		<image>
-			<cube url="panos/sexta.tiles/pano_%s.jpg" />
 		</image>
 
 	</scene>
@@ -169,5 +122,60 @@
 
 	</scene>
 
+	<scene name="scene_cuarta" title="cuarta" onstart="" thumburl="panos/cuarta.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cuarta.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cuarta.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_quinta" title="quinta" onstart="" thumburl="panos/quinta.tiles/thumb.jpg" lat="18.48775000" lng="-69.96294444" alt="44.90" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/quinta.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/quinta.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_sexta" title="sexta" onstart="" thumburl="panos/sexta.tiles/thumb.jpg" lat="18.48783333" lng="-69.96286111" alt="32.40" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/sexta.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/sexta.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_septima" title="septima" onstart="" thumburl="panos/septima.tiles/thumb.jpg" lat="18.48791667" lng="-69.96283333" alt="26.50" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/septima.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/septima.tiles/pano_%s.jpg" />
+		</image>
+
+	</scene>
 
 </krpano>
