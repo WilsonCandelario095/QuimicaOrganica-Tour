@@ -146,6 +146,56 @@
 		set(hotspot[spot6].visible, false);
 	</action>
 
+	<action name="show_quinta_1">
+		set(hotspot[newhs_6].visible, false);
+		set(hotspot[spot3].visible, true);
+	</action>
+
+	<action name="show_quinta_1_back">
+		set(hotspot[newhs_6].visible, true);
+		set(hotspot[spot3].visible, false);
+	</action>
+
+	<action name="show_quinta_2">
+		set(hotspot[newhs_7].visible, false);
+		set(hotspot[spot4].visible, true);
+	</action>
+
+	<action name="show_quinta_2_back">
+		set(hotspot[newhs_7].visible, true);
+		set(hotspot[spot4].visible, false);
+	</action>
+
+	<action name="show_quinta_3">
+		set(hotspot[newhs_8].visible, false);
+		set(hotspot[spot5].visible, true);
+	</action>
+
+	<action name="show_quinta_3_back">
+		set(hotspot[newhs_8].visible, true);
+		set(hotspot[spot5].visible, false);
+	</action>
+
+	<action name="show_sexta_1">
+		set(hotspot[newhs_1].visible, false);
+		set(hotspot[spot3].visible, true);
+	</action>
+
+	<action name="show_sexta_1_back">
+		set(hotspot[newhs_1].visible, true);
+		set(hotspot[spot3].visible, false);
+	</action>
+
+	<action name="show_sexta_2">
+		set(hotspot[newhs_2].visible, false);
+		set(hotspot[spot4].visible, true);
+	</action>
+
+	<action name="show_sexta_2_back">
+		set(hotspot[newhs_2].visible, true);
+		set(hotspot[spot4].visible, false);
+	</action>
+
 	<scene name="scene_primera" title="primera" onstart="" thumburl="panos/primera.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
@@ -235,6 +285,28 @@
 		<image>
 			<cube url="panos/tercera.tiles/pano_%s.jpg" />
 		</image>
+
+		<hotspot
+			name="spot1"
+			style="pisada"
+			url="images/pisada.png"
+			ath="-140" 
+			atv="39"
+			linkedscene="scene_segunda"
+			fov="90"
+			visible="true"
+		/>
+
+		<hotspot
+			name="spot2"
+			style="pisada"
+			url="images/pisada.png"
+			ath="-3" 
+			atv="46"
+			linkedscene="scene_cuarta"
+			fov="90"
+			visible="true"
+		/>
 
 	</scene>
 
@@ -347,18 +419,6 @@
 		/>
 
 		<hotspot
-			name="spot5"
-			url="images/kitasato.png"
-			ath="-31.3"
-			atv="2.9"
-			scale="0.5"
-			fov="90"
-			alpha="0.8"
-			visible="false"
-			onclick="show_cuarta_4_back();"
-		/>
-
-		<hotspot
 			name="spot6"
 			url="images/material_laboratorio.png"
 			ath="4.7"
@@ -383,26 +443,84 @@
 			<cube url="panos/quinta.tiles/pano_%s.jpg" />
 		</image>
 
-		<hotspot name="newhs_6" style="newhs_poly">
+		<hotspot
+			name="spot1"
+			style="pisada"
+			url="images/pisada.png"
+			ath="53.38239456103241" 
+			atv="32.93374333723422"
+			linkedscene="scene_sexta"
+			fov="90"
+			visible="true"
+		/>
+
+		<hotspot
+			name="spot2"
+			style="pisada"
+			url="images/pisada.png"
+			ath="-156.59546790169463" 
+			atv="40.04496287050767"
+			linkedscene="scene_cuarta"
+			fov="90"
+			visible="true"
+		/>
+
+		<hotspot name="newhs_6" style="newhs_poly" visible="true" onclick="show_quinta_1();">
 			<point ath="-103.65923954794494" atv="-4.698672939867543" />
 			<point ath="-103.71111228845433" atv="6.710073861507672" />
 			<point ath="-91.4258639580566" atv="7.043675966560535" />
 			<point ath="-92.02472527119903" atv="-5.316638555750028" />
 		</hotspot>
 
-		<hotspot name="newhs_7" style="newhs_poly">
+		<hotspot name="newhs_7" style="newhs_poly" visible="true" onclick="show_quinta_2();">
 			<point ath="-31.99645531498686" atv="-25.64841105359758" />
 			<point ath="-33.01410591666786" atv="8.469528557074286" />
 			<point ath="21.2382249320803" atv="9.194917914625904" />
 			<point ath="20.411302366821133" atv="-25.568538871780017" />
 		</hotspot>
 
-		<hotspot name="newhs_8" style="newhs_poly">
+		<hotspot name="newhs_8" style="newhs_poly" visible="true" onclick="show_quinta_3();">
 			<point ath="-89.98161031221423" atv="-0.9237207791551505" />
 			<point ath="-89.29440030396836" atv="6.147636829084633" />
 			<point ath="-57.80901748815171" atv="5.18361974151133" />
 			<point ath="-58.567813454036354" atv="-0.974429456981095" />
 		</hotspot>
+
+		<hotspot
+			name="spot3"
+			url="images/kitasato.png"
+			ath="-95.6"
+			atv="18.2"
+			scale="0.5"
+			fov="90"
+			alpha="0.8"
+			visible="false"
+			onclick="show_quinta_1_back();"
+		/>
+
+		<hotspot
+			name="spot4"
+			url="images/campana.png"
+			ath="-69.0"
+			atv="0.9"
+			scale="0.5"
+			fov="90"
+			alpha="0.8"
+			visible="false"
+			onclick="show_quinta_2_back();"
+		/>
+
+		<hotspot
+			name="spot5"
+			url="images/material_laboratorio.png"
+			ath="-17.8"
+			atv="16.8"
+			scale="0.5"
+			fov="90"
+			alpha="0.8"
+			visible="false"
+			onclick="show_quinta_3_back();"
+		/>
 	</scene>
 
 	<scene name="scene_sexta" title="sexta" onstart="" thumburl="panos/sexta.tiles/thumb.jpg" lat="18.48783333" lng="-69.96286111" alt="32.40" heading="0.0">
@@ -417,7 +535,29 @@
 			<cube url="panos/sexta.tiles/pano_%s.jpg" />
 		</image>
 
-		<hotspot name="newhs_1" style="newhs_poly">
+		<hotspot
+			name="spot1"
+			style="pisada"
+			url="images/pisada.png"
+			ath="89" 
+			atv="33"
+			linkedscene="scene_quinta"
+			fov="90"
+			visible="true"
+		/>
+
+		<hotspot
+			name="spot2"
+			style="pisada"
+			url="images/pisada.png"
+			ath="-17" 
+			atv="49"
+			linkedscene="scene_tercera"
+			fov="90"
+			visible="true"
+		/>
+
+		<hotspot name="newhs_1" style="newhs_poly" visible="true" onclick="show_sexta_1();">
 			<point ath="107.13930159874013" atv="-14.231875084854426" />
 			<point ath="107.19530192079708" atv="2.434599174163405" />
 			<point ath="117.60741448177899" atv="3.2280499127665627" />
@@ -425,28 +565,38 @@
 			<point ath="116.16504692149223" atv="-17.499757910871185" />
 		</hotspot>
 
-		<hotspot name="newhs_2" style="newhs_poly">
-			<point ath="121.98049372658943" atv="-19.810140707604273" />
-			<point ath="122.03796895535422" atv="-12.575742388238" />
-			<point ath="129.07478502891894" atv="-10.854195813603855" />
-			<point ath="140.2103206747175" atv="-12.459753964494224" />
-			<point ath="140.5042018156358" atv="-20.16480608854533" />
-			<point ath="135.63043124762635" atv="-23.34860176413034" />
+		<hotspot name="newhs_2" style="newhs_poly" visible="true" onclick="show_sexta_2();">
+			<point ath="172.83676415078622" atv="-1.4932794314063877" />
+			<point ath="171.83126996641516" atv="1.9113466420734044" />
+			<point ath="172.63793359481213" atv="6.937314387426299" />
+			<point ath="178.76072714559962" atv="6.908347354577866" />
+			<point ath="178.75656093715352" atv="2.391624791000311" />
+			<point ath="175.15210180204127" atv="-1.537244046642204" />
 		</hotspot>
 
-	</scene>
+		<hotspot
+			name="spot3"
+			url="images/horno.png"
+			ath="116.2"
+			atv="-7.1"
+			scale="0.5"
+			fov="90"
+			alpha="0.8"
+			visible="false"
+			onclick="show_sexta_1_back();"
+		/>
 
-	<scene name="scene_septima" title="septima" onstart="" thumburl="panos/septima.tiles/thumb.jpg" lat="18.48791667" lng="-69.96283333" alt="26.50" heading="0.0">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/septima.tiles/preview.jpg" />
-
-		<image>
-			<cube url="panos/septima.tiles/pano_%s.jpg" />
-		</image>
+		<hotspot
+			name="spot4"
+			url="images/melt_temp.png"
+			ath="131.0"
+			atv="-14.5"
+			scale="0.5"
+			fov="90"
+			alpha="0.8"
+			visible="false"
+			onclick="show_sexta_2_back();"
+		/>
 
 	</scene>
 
