@@ -328,7 +328,7 @@
 			url="images/pisada.png"
 			ath="53.38239456103241" 
 			atv="32.93374333723422"
-			linkedscene="scene_quinta"
+			linkedscene="scene_cuarta_2"
 			fov="90"
 			visible="true"
 		/>
@@ -488,7 +488,7 @@
 			atv="-3.90"
 			visible="false"
 			scale="0.5"
-    		onclick="loadscene(scene_sexta);"
+    		onclick="loadscene(scene_quinta);"
 			fov="90"
 		/>
 
@@ -523,7 +523,7 @@
 			url="images/pisada.png"
 			ath="53.38239456103241" 
 			atv="32.93374333723422"
-			linkedscene="scene_sexta"
+			linkedscene="scene_quinta_2"
 			fov="90"
 			visible="true"
 		/>
@@ -682,7 +682,7 @@
 			url="images/pisada.png"
 			ath="-17" 
 			atv="49"
-			linkedscene="scene_tercera"
+			linkedscene="scene_sexta_2"
 			fov="90"
 			visible="true"
 		/>
@@ -765,7 +765,7 @@
 			atv="-3.90"
 			visible="false"
 			scale="0.5"
-    		onclick="loadscene(scene_sexta);"
+    		onclick="loadscene(scene_segunda_2);"
 			fov="90"
 		/>
 
@@ -779,6 +779,20 @@
 			onclick="reset_quinta_2();"
 			fov="90"
 		/>
+	</scene>
+
+	<scene name="scene_segunda_2" title="segunda" onstart="" thumburl="panos/segunda.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="270.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/segunda.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/segunda.tiles/pano_%s.jpg" />
+		</image>
+
 	</scene>
 
 </krpano>
