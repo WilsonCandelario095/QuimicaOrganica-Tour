@@ -431,6 +431,80 @@
 		/>
 	</scene>
 
+	<scene name="scene_cuarta_2" title="cuarta" onstart="" thumburl="panos/cuarta.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cuarta.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cuarta.tiles/pano_%s.jpg" />
+		</image>
+
+		<hotspot name="newhs_1" style="newhs_poly" visible="true" onclick="show_cuarta_1();">
+			<point ath="-99.840590980699" atv="11.822844650778169" />
+			<point ath="-91.15710190816594" atv="11.252638688913098" />
+			<point ath="-91.0273830227294" atv="25.019681536926086" />
+			<point ath="-100.38913186766848" atv="24.81212469719133" />
+		</hotspot>
+
+		<hotspot name="newhs_2" style="newhs_poly" visible="true" onclick="show_cuarta_2();">
+			<point ath="-80.3316571773222" atv="-25.126247176702222" />
+			<point ath="-81.05312535849134" atv="19.954786355128583" />
+			<point ath="-68.33626876429378" atv="29.230897830660705" />
+			<point ath="-68.66818539025405" atv="5.843395689010566" />
+			<point ath="-58.32524842265036" atv="4.643572337695124" />
+			<point ath="-58.43407920002625" atv="-29.157082806016632" />
+		</hotspot>
+
+		<hotspot name="newhs_3" style="newhs_poly" visible="true" onclick="show_cuarta_3();">
+			<point ath="-64.3526963217451" atv="6.215921773632787" />
+			<point ath="28.625746255415834" atv="7.627711119271632" />
+			<point ath="29.186437696621056" atv="28.363120438685765" />
+			<point ath="-64.51252098530921" atv="25.180629338534384" />
+		</hotspot>
+
+		<hotspot name="newhs_4" style="newhs_poly" visible="true" onclick="show_cuarta_4();">
+			<point ath="-37.383440591123076" atv="-1.5000149270478627" />
+			<point ath="-37.416101311600244" atv="5.939211828076645" />
+			<point ath="-28.5483051034779" atv="6.115473983868982" />
+			<point ath="-26.595043367863354" atv="5.318463810874988" />
+			<point ath="-26.451395592002882" atv="-1.5498317528998122" />
+		</hotspot>
+
+		<hotspot name="newhs_5" style="newhs_poly" visible="true" onclick="show_cuarta_5();">
+			<point ath="-8.799016419695477" atv="-1.5586710203508047" />
+			<point ath="16.96881810631953" atv="-1.261276000920001" />
+			<point ath="18.323584780602232" atv="6.856884628247737" />
+			<point ath="-7.909588095454637" atv="7.27268932641695" />
+		</hotspot>
+
+		<hotspot
+			name="spot2"
+			url="images/correct.png"
+			ath="114.79" 
+			atv="-3.90"
+			visible="false"
+			scale="0.5"
+    		onclick="loadscene(scene_sexta);"
+			fov="90"
+		/>
+
+		<hotspot
+			name="spot3"
+			url="images/incorrect.png"
+			ath="177" 
+			atv="49"
+			visible="false"
+			scale="0.5"
+			onclick="reset_quinta_2();"
+			fov="90"
+		/>
+
+	</scene>
+
 	<scene name="scene_quinta" title="quinta" onstart="" thumburl="panos/quinta.tiles/thumb.jpg" lat="18.48775000" lng="-69.96294444" alt="44.90" heading="0.0">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
@@ -523,6 +597,62 @@
 		/>
 	</scene>
 
+	<scene name="scene_quinta_2" title="quinta" onstart="" thumburl="panos/quinta.tiles/thumb.jpg" lat="18.48775000" lng="-69.96294444" alt="44.90" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/quinta.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/quinta.tiles/pano_%s.jpg" />
+		</image>
+
+		<hotspot name="newhs_6" style="newhs_poly" visible="true" onclick="show_quinta_1();">
+			<point ath="-103.65923954794494" atv="-4.698672939867543" />
+			<point ath="-103.71111228845433" atv="6.710073861507672" />
+			<point ath="-91.4258639580566" atv="7.043675966560535" />
+			<point ath="-92.02472527119903" atv="-5.316638555750028" />
+		</hotspot>
+
+		<hotspot name="newhs_7" style="newhs_poly" visible="true" onclick="show_quinta_2();">
+			<point ath="-31.99645531498686" atv="-25.64841105359758" />
+			<point ath="-33.01410591666786" atv="8.469528557074286" />
+			<point ath="21.2382249320803" atv="9.194917914625904" />
+			<point ath="20.411302366821133" atv="-25.568538871780017" />
+		</hotspot>
+
+		<hotspot name="newhs_8" style="newhs_poly" visible="true" onclick="show_quinta_3();">
+			<point ath="-89.98161031221423" atv="-0.9237207791551505" />
+			<point ath="-89.29440030396836" atv="6.147636829084633" />
+			<point ath="-57.80901748815171" atv="5.18361974151133" />
+			<point ath="-58.567813454036354" atv="-0.974429456981095" />
+		</hotspot>
+
+		<hotspot
+			name="spot2"
+			url="images/correct.png"
+			ath="114.79" 
+			atv="-3.90"
+			visible="false"
+			scale="0.5"
+    		onclick="loadscene(scene_sexta);"
+			fov="90"
+		/>
+
+		<hotspot
+			name="spot3"
+			url="images/incorrect.png"
+			ath="177" 
+			atv="49"
+			visible="false"
+			scale="0.5"
+			onclick="reset_quinta_2();"
+			fov="90"
+		/>
+	</scene>
+
 	<scene name="scene_sexta" title="sexta" onstart="" thumburl="panos/sexta.tiles/thumb.jpg" lat="18.48783333" lng="-69.96286111" alt="32.40" heading="0.0">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
@@ -597,7 +727,58 @@
 			visible="false"
 			onclick="show_sexta_2_back();"
 		/>
+	</scene>
 
+	<scene name="scene_sexta_2" title="sexta" onstart="" thumburl="panos/sexta.tiles/thumb.jpg" lat="18.48783333" lng="-69.96286111" alt="32.40" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/sexta.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/sexta.tiles/pano_%s.jpg" />
+		</image>
+
+		<hotspot name="newhs_1" style="newhs_poly" visible="true" onclick="show_sexta_1();">
+			<point ath="107.13930159874013" atv="-14.231875084854426" />
+			<point ath="107.19530192079708" atv="2.434599174163405" />
+			<point ath="117.60741448177899" atv="3.2280499127665627" />
+			<point ath="117.84062102418574" atv="-16.998800136357556" />
+			<point ath="116.16504692149223" atv="-17.499757910871185" />
+		</hotspot>
+
+		<hotspot name="newhs_2" style="newhs_poly" visible="true" onclick="show_sexta_2();">
+			<point ath="172.83676415078622" atv="-1.4932794314063877" />
+			<point ath="171.83126996641516" atv="1.9113466420734044" />
+			<point ath="172.63793359481213" atv="6.937314387426299" />
+			<point ath="178.76072714559962" atv="6.908347354577866" />
+			<point ath="178.75656093715352" atv="2.391624791000311" />
+			<point ath="175.15210180204127" atv="-1.537244046642204" />
+		</hotspot>
+
+		<hotspot
+			name="spot2"
+			url="images/correct.png"
+			ath="114.79" 
+			atv="-3.90"
+			visible="false"
+			scale="0.5"
+    		onclick="loadscene(scene_sexta);"
+			fov="90"
+		/>
+
+		<hotspot
+			name="spot3"
+			url="images/incorrect.png"
+			ath="177" 
+			atv="49"
+			visible="false"
+			scale="0.5"
+			onclick="reset_quinta_2();"
+			fov="90"
+		/>
 	</scene>
 
 </krpano>
