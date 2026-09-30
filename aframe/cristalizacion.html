@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10272a">
+  <title>Cristalización sencilla | Laboratorio inmersivo</title>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #10272a; }
+    body { font-family: "Trebuchet MS", sans-serif; }
+    .notice {
+      position: fixed; z-index: 2; left: max(16px, env(safe-area-inset-left)); top: max(16px, env(safe-area-inset-top));
+      width: min(90vw, 420px); box-sizing: border-box;
+      padding: 10px 14px; border: 1px solid rgba(165, 224, 209, .25); border-radius: 5px;
+      color: #e6f1e9; background: rgba(13, 35, 37, .86); text-align: center;
+      font-size: 13px; line-height: 1.45; pointer-events: none;
+    }
+    .notice strong { color: #ffd17a; font-weight: 700; }
+    .in-vr .notice { display: none; }
+    .a-enter-vr { bottom: max(16px, env(safe-area-inset-bottom)) !important; }
+    @media (max-width: 520px) { .notice { font-size: 12px; padding: 8px 10px; } }
+  </style>
+</head>
+<body>
+  <div class="notice"><strong>Explora:</strong> mira la acción disponible hasta que se complete el círculo, o selecciónala con el mando VR.</div>
+
+  <a-scene background="color: #10272a" renderer="colorManagement: true; physicallyCorrectLights: true" vr-mode-ui="enabled: true">
+    <a-assets>
+      <a-mixin id="crystal-material" material="color: #8ee7d1; emissive: #2c8278; emissiveIntensity: 0.35; metalness: 0.18; roughness: 0.22"></a-mixin>
+    </a-assets>
+
+    <a-entity light="type: ambient; color: #d6f5e9; intensity: 0.8"></a-entity>
+    <a-entity light="type: directional; color: #ffe4ad; intensity: 1.25" position="-3 6 2"></a-entity>
+    <a-entity light="type: point; color: #55c9bd; intensity: 1.4; distance: 9" position="-2 2 -3"></a-entity>
+    <a-sky color="#10272a"></a-sky>
+    <a-plane rotation="-90 0 0" width="200" height="200" color="#183536" position="0 -0.03 0"></a-plane>
+    <a-circle rotation="-90 0 0" radius="2.8" color="#24504b" opacity="0.28" position="0 0.005 -3.5"></a-circle>
+
+    <a-entity position="0 0 -4.8">
+      <a-text value="LABORATORIO DE MATERIA" align="center" color="#8ed6c2" width="6" position="0 3.45 0"></a-text>
+      <a-text value="Cristalizacion sencilla" align="center" color="#fff1d0" width="7.5" position="0 3.08 0"></a-text>
+      <a-text value="De una disolucion a un solido ordenado" align="center" color="#c3d8ce" width="4.8" position="0 2.79 0"></a-text>
+    </a-entity>
+
+    <a-entity id="flask" position="-1.55 0 -4.4">
+      <a-cylinder radius="0.075" height="0.48" color="#c8e8e1" opacity="0.3" position="0 2.04 0" material="transparent: true; metalness: 0.1; roughness: 0.15"></a-cylinder>
+      <a-sphere radius="0.72" scale="1 1.08 0.82" color="#b9e6df" opacity="0.16" position="0 1.2 0" material="transparent: true; metalness: 0.16; roughness: 0.12; side: double"></a-sphere>
+      <a-sphere id="solution" radius="0.58" scale="1 0.57 0.78" color="#42afa4" opacity="0.72" position="0 0.83 0" material="transparent: true; roughness: 0.24; side: double"></a-sphere>
+      <a-ring radius-inner="0.49" radius-outer="0.54" color="#d6f8ee" opacity="0.6" rotation="-90 0 0" position="0 1.15 0"></a-ring>
+      <a-cylinder radius="0.085" height="0.06" color="#d6f8ee" opacity="0.65" position="0 2.3 0" material="transparent: true"></a-cylinder>
+      <a-entity id="molecules"></a-entity>
+      <a-entity id="crystals"></a-entity>
+      <a-entity id="evaporation"></a-entity>
+      <a-text value="DISOLUCION" align="center" color="#a4e3d3" width="3.2" position="0 0.02 0.76"></a-text>
+      <a-text value="agua + soluto disuelto" align="center" color="#e3eee5" width="2.6" position="0 -0.22 0.76"></a-text>
+    </a-entity>
+
+    <a-entity id="lesson-panel" position="1.22 1.44 -4.55">
+      <a-plane width="2.65" height="2.38" color="#193b39" opacity="0.94" material="metalness: 0.08; roughness: 0.8"></a-plane>
+      <a-plane width="0.045" height="2.38" color="#e1ad59" position="-1.3 0 0.01"></a-plane>
+      <a-text value="PASO ACTUAL" align="left" color="#ffd17a" width="3" position="-1.12 0.88 0.02"></a-text>
+      <a-text id="stage-title" value="1  ·  Disolver" align="left" color="#fff1d0" width="3.1" position="-1.12 0.52 0.02"></a-text>
+      <a-text id="stage-copy" value="El soluto se mezcla con agua. Al calentar y añadir más soluto, se forma una disolución concentrada." align="left" color="#e1eee5" width="2.85" wrap-count="35" line-height="54" position="-1.12 0.06 0.02"></a-text>
+      <a-text id="stage-count" value="ETAPA 1 DE 3" align="left" color="#8ed6c2" width="2.8" position="-1.12 -0.55 0.02"></a-text>
+    </a-entity>
+
+    <a-entity id="controls" position="0 1.2 -3.05">
+      <a-entity class="control" data-action="start" position="0.65 0 0">
+        <a-plane class="hit" width="1.55" height="0.48" color="#d69845" material="shader: flat"></a-plane>
+        <a-text value="INICIAR" align="center" color="#172a28" width="3" position="0 0 0.02"></a-text>
+      </a-entity>
+      <a-entity class="control" data-action="next" position="0.65 0 0" visible="false">
+        <a-plane class="hit" width="1.55" height="0.48" color="#438f80" material="shader: flat"></a-plane>
+        <a-text value="VER CRISTALES" align="center" color="#ffffff" width="2.7" position="0 0 0.02"></a-text>
+      </a-entity>
+      <a-entity class="control" data-action="reset" position="2.45 0 0" visible="false">
+        <a-plane class="hit" width="1.05" height="0.48" color="#335550" material="shader: flat"></a-plane>
+        <a-text value="REINICIAR" align="center" color="#ffffff" width="1.55" position="0 0 0.02"></a-text>
+      </a-entity>
+    </a-entity>
+
+    <a-entity id="camera-rig" position="0 1.6 0">
+      <a-camera look-controls="pointerLockEnabled: false" wasd-controls="enabled: false">
+        <a-entity cursor="fuse: true; fuseTimeout: 950" raycaster="objects: .hit; far: 12"
+          geometry="primitive: ring; radiusInner: 0.008; radiusOuter: 0.014"
+          material="color: #fff1d0; shader: flat" position="0 0 -1"
+          animation__fuse="property: scale; startEvents: fusing; from: 1 1 1; to: 1.8 1.8 1.8; dur: 950; easing: linear"
+          animation__unfuse="property: scale; startEvents: mouseleave; to: 1 1 1; dur: 120"></a-entity>
+      </a-camera>
+    </a-entity>
+    <a-entity laser-controls="hand: right" raycaster="objects: .hit; far: 12" line="color: #ffd17a; opacity: 0.8"></a-entity>
+  </a-scene>
+
+  <script>
+    (() => {
+      const scene = document.querySelector('a-scene');
+      document.querySelectorAll('a-text').forEach((text) => {
+        text.setAttribute('font', 'https://cdn.aframe.io/fonts/Exo2Bold.fnt');
+      });
+      const solution = document.querySelector('#solution');
+      const stageTitle = document.querySelector('#stage-title');
+      const stageCopy = document.querySelector('#stage-copy');
+      const stageCount = document.querySelector('#stage-count');
+      const helpText = document.querySelector('.notice');
+      const crystalGroup = document.querySelector('#crystals');
+      const evaporationGroup = document.querySelector('#evaporation');
+      const molecules = document.querySelector('#molecules');
+      const startControl = document.querySelector('[data-action="start"]');
+      const nextControl = document.querySelector('[data-action="next"]');
+      const resetControl = document.querySelector('[data-action="reset"]');
+      let stage = 1;
+      let timers = [];
+      let evaporationComplete = false;
+
+      const lessons = [
+        ['1  ·  Disolver', 'El soluto se mezcla con agua. Al calentar y anadir mas soluto, se forma una disolucion concentrada.'],
+        ['2  ·  Sobresaturar', 'Al enfriarse o evaporarse parte del agua, la disolucion ya no puede mantener todo el soluto disuelto.'],
+        ['3  ·  Cristalizar', 'Las particulas se ordenan alrededor de un nucleo y el cristal crece. La evaporacion deja cristales solidos.']
+      ];
+
+      function updateControls() {
+        const startVisible = stage === 1;
+        const nextVisible = stage === 2 && evaporationComplete;
+        const resetVisible = stage > 1;
+        startControl.setAttribute('visible', startVisible);
+        nextControl.setAttribute('visible', nextVisible);
+        resetControl.setAttribute('visible', resetVisible);
+        startControl.classList.toggle('hit', startVisible);
+        nextControl.classList.toggle('hit', nextVisible);
+        resetControl.classList.toggle('hit', resetVisible);
+        helpText.innerHTML = stage === 1
+          ? '<strong>Explora:</strong> mira <strong>INICIAR</strong> hasta que se complete el círculo, o selecciónalo con el mando VR.'
+          : stage === 2
+            ? evaporationComplete
+              ? '<strong>Observa:</strong> la disolución se concentró. Selecciona <strong>VER CRISTALES</strong> para continuar.'
+              : '<strong>Observa:</strong> parte del agua se evapora y la disolución se concentra.'
+            : '<strong>Resultado:</strong> las partículas formaron un sólido ordenado. Selecciona <strong>REINICIAR</strong> para repetir.';
+      }
+
+      updateControls();
+
+      function setStage(value) {
+        stage = Math.max(1, Math.min(3, value));
+        stageTitle.setAttribute('value', lessons[stage - 1][0]);
+        stageCopy.setAttribute('value', lessons[stage - 1][1]);
+        stageCount.setAttribute('value', `ETAPA ${stage} DE 3`);
+        updateControls();
+      }
+
+      function clearSimulation() {
+        timers.forEach(clearTimeout);
+        timers = [];
+        evaporationComplete = false;
+        crystalGroup.replaceChildren();
+        evaporationGroup.replaceChildren();
+        solution.setAttribute('scale', '1 0.57 0.78');
+        solution.setAttribute('opacity', '0.72');
+        setStage(1);
+      }
+
+      function addVapor() {
+        for (let index = 0; index < 12; index += 1) {
+          const x = (Math.random() - 0.5) * 0.58;
+          const z = (Math.random() - 0.5) * 0.46;
+          const vapor = document.createElement('a-sphere');
+          vapor.setAttribute('radius', '0.035');
+          vapor.setAttribute('color', '#d9f4e9');
+          vapor.setAttribute('opacity', '0.68');
+          vapor.setAttribute('position', `${x} ${1.28 + Math.random() * 0.35} ${z}`);
+          vapor.setAttribute('animation', `property: position; to: ${x} ${2.7 + Math.random() * 0.45} ${z}; dur: ${2200 + Math.random() * 1200}; easing: easeOutQuad`);
+          vapor.setAttribute('animation__fade', 'property: material.opacity; to: 0; dur: 2600; easing: linear');
+          evaporationGroup.appendChild(vapor);
+        }
+      }
+
+      function growCrystals() {
+        const cluster = [
+          [-0.22, 1.03, 0.43, 0.2], [-0.04, 1.05, 0.5, 0.26], [0.16, 1.03, 0.42, 0.19],
+          [0.04, 1.23, 0.47, 0.22], [-0.16, 1.25, 0.37, 0.15], [0.23, 1.24, 0.44, 0.14],
+          [-0.31, 1.1, 0.32, 0.12], [0.31, 1.1, 0.34, 0.13], [0, 1.4, 0.42, 0.13]
+        ];
+        cluster.forEach(([x, y, z, size], index) => {
+          const crystal = document.createElement('a-entity');
+          crystal.setAttribute('geometry', `primitive: octahedron; radius: ${size}`);
+          crystal.setAttribute('mixin', 'crystal-material');
+          crystal.setAttribute('position', `${x} ${y} ${z}`);
+          crystal.setAttribute('scale', '0.001 0.001 0.001');
+          crystal.setAttribute('animation', `property: scale; from: 0.001 0.001 0.001; to: 1 1 1; dur: ${900 + index * 110}; delay: ${index * 120}; easing: easeOutElastic`);
+          crystalGroup.appendChild(crystal);
+        });
+      }
+
+      function startCrystallization() {
+        clearSimulation();
+        setStage(2);
+        addVapor();
+        timers.push(setTimeout(() => {
+          solution.setAttribute('scale', '1 0.34 0.78');
+          solution.setAttribute('opacity', '0.56');
+          evaporationComplete = true;
+          updateControls();
+        }, 2300));
+      }
+
+      document.querySelectorAll('#controls .control').forEach((control) => {
+        control.addEventListener('mouseenter', () => {
+          const plane = control.querySelector('a-plane');
+          plane.setAttribute('material', 'emissive', '#275b50');
+        });
+        control.addEventListener('mouseleave', () => {
+          control.querySelector('a-plane').removeAttribute('material', 'emissive');
+        });
+        control.addEventListener('click', () => {
+          const action = control.dataset.action;
+          if (action === 'start') startCrystallization();
+          if (action === 'next') {
+            if (stage === 2 && evaporationComplete) {
+              timers.forEach(clearTimeout);
+              timers = [];
+              setStage(3);
+              growCrystals();
+            }
+          }
+          if (action === 'reset') clearSimulation();
+        });
+      });
+
+      for (let index = 0; index < 18; index += 1) {
+        const molecule = document.createElement('a-sphere');
+        const angle = index * 2.399;
+        const radius = 0.12 + (index % 5) * 0.075;
+        molecule.setAttribute('radius', '0.035');
+        molecule.setAttribute('color', index % 3 === 0 ? '#ffd17a' : '#d9f4e9');
+        molecule.setAttribute('opacity', '0.9');
+        molecule.setAttribute('position', `${Math.cos(angle) * radius} ${0.55 + (index % 4) * 0.14} ${Math.sin(angle) * radius}`);
+        molecules.appendChild(molecule);
+      }
+
+      scene.addEventListener('enter-vr', () => document.body.classList.add('in-vr'));
+      scene.addEventListener('exit-vr', () => document.body.classList.remove('in-vr'));
+    })();
+  </script>
+</body>
+</html>
