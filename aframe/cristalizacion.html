@@ -3,81 +3,156 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#10272a">
-  <title>Cristalización sencilla | Laboratorio inmersivo</title>
+  <meta name="theme-color" content="#142824">
+  <title>Cristalización del azúcar | Laboratorio virtual</title>
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   <style>
-    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #10272a; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #142824; }
     body { font-family: "Trebuchet MS", sans-serif; }
-    .a-enter-vr { bottom: max(16px, env(safe-area-inset-bottom)) !important; }
+    .a-enter-vr { bottom: max(14px, env(safe-area-inset-bottom)) !important; }
+    a-scene { touch-action: none; }
   </style>
 </head>
 <body>
-  <a-scene background="color: #10272a" renderer="colorManagement: true; physicallyCorrectLights: true" vr-mode-ui="enabled: true">
+  <a-scene background="color: #142824" renderer="colorManagement: true; physicallyCorrectLights: true; antialias: false" vr-mode-ui="enabled: true" loading-screen="enabled: false">
     <a-assets>
-      <a-mixin id="crystal-material" material="color: #8ee7d1; emissive: #2c8278; emissiveIntensity: 0.35; metalness: 0.18; roughness: 0.22"></a-mixin>
+      <a-mixin id="sugar-crystal" material="color: #fffdf4; roughness: 0.42; metalness: 0.02"></a-mixin>
+      <a-mixin id="glass-material" material="color: #d6f1ed; transparent: true; opacity: 0.22; roughness: 0.12; metalness: 0.08; side: double"></a-mixin>
     </a-assets>
 
-    <a-entity light="type: ambient; color: #d6f5e9; intensity: 0.8"></a-entity>
-    <a-entity light="type: directional; color: #ffe4ad; intensity: 1.25" position="-3 6 2"></a-entity>
-    <a-entity light="type: point; color: #55c9bd; intensity: 1.4; distance: 9" position="-2 2 -3"></a-entity>
-    <a-sky color="#10272a"></a-sky>
-    <a-plane rotation="-90 0 0" width="200" height="200" color="#183536" position="0 -0.03 0"></a-plane>
-    <a-circle rotation="-90 0 0" radius="2.8" color="#24504b" opacity="0.28" position="0 0.005 -3.5"></a-circle>
+    <a-entity light="type: ambient; color: #d8e9df; intensity: 0.9"></a-entity>
+    <a-entity light="type: directional; color: #ffe1ae; intensity: 1.15" position="-3 6 2"></a-entity>
+    <a-entity light="type: point; color: #75c8aa; intensity: 0.8; distance: 8" position="2 3 -3"></a-entity>
+    <a-sky color="#142824"></a-sky>
+    <a-plane rotation="-90 0 0" width="80" height="80" color="#1b302b" position="0 -0.04 0"></a-plane>
+    <a-plane width="8" height="4" color="#203a33" position="0 2.1 -6.2" material="shader: flat"></a-plane>
 
-    <a-entity id="burner" position="-1.55 0 -4.4">
-      <a-cylinder radius="0.42" height="0.12" color="#405651" position="0 0.07 0" material="metalness: 0.45; roughness: 0.42"></a-cylinder>
-      <a-cylinder radius="0.3" height="0.045" color="#91a89d" position="0 0.15 0" material="metalness: 0.65; roughness: 0.28"></a-cylinder>
-      <a-cone id="heat-flame" radius-bottom="0.16" radius-top="0.045" height="0.32" color="#f5a34c" opacity="0.88" position="0 0.34 0" visible="false" material="shader: flat; transparent: true"
-        animation__flicker="property: scale; from: 1 0.86 1; to: 0.9 1.08 0.9; dur: 360; direction: alternate; loop: true; easing: easeInOutSine"></a-cone>
+    <a-entity id="workbench">
+      <a-box width="5.4" height="0.18" depth="2.7" color="#76563d" position="0 0.69 -4.05" material="roughness: 0.72"></a-box>
+      <a-box width="0.16" height="1.28" depth="0.16" color="#4b3d31" position="-2.48 0.05 -5.18"></a-box>
+      <a-box width="0.16" height="1.28" depth="0.16" color="#4b3d31" position="2.48 0.05 -5.18"></a-box>
+      <a-box width="0.16" height="1.28" depth="0.16" color="#4b3d31" position="-2.48 0.05 -2.92"></a-box>
+      <a-box width="0.16" height="1.28" depth="0.16" color="#4b3d31" position="2.48 0.05 -2.92"></a-box>
     </a-entity>
 
-    <a-entity position="0 0 -4.8">
-      <a-text value="LABORATORIO DE MATERIA" align="center" color="#8ed6c2" width="6" position="0 3.45 0"></a-text>
-      <a-text value="Cristalización sencilla" align="center" color="#fff1d0" width="7.5" position="0 3.08 0"></a-text>
-      <a-text value="De una disolución a un sólido ordenado" align="center" color="#c3d8ce" width="4.8" position="0 2.79 0"></a-text>
+    <a-entity position="0 3.32 -5.78">
+      <a-plane width="4.55" height="1.5" color="#183630" material="shader: flat; opacity: 0.96"></a-plane>
+      <a-plane width="0.045" height="1.5" color="#e9b35e" position="-2.22 0 0.015" material="shader: flat"></a-plane>
+      <a-text id="stage-title" value="1 / 9  ·  Prepara la brocheta" align="left" color="#ffe2ad" width="4.2" position="-2.02 0.47 0.03"></a-text>
+      <a-text id="stage-copy" value="Humedece la brocheta y cúbrela con azúcar para crear semillas donde crecerán los cristales." align="left" color="#e4eee7" width="4.15" wrap-count="62" line-height="44" position="-2.02 0.13 0.03"></a-text>
+      <a-text id="stage-count" value="PASO 1 DE 9" align="left" color="#8fd1b4" width="2.6" position="-2.02 -0.42 0.03"></a-text>
+      <a-text id="science-note" value="CIENCIA  ·  El azúcar disuelto puede ordenarse en cristales al enfriarse y evaporarse el agua." align="left" color="#b9ccbf" width="4.15" wrap-count="62" line-height="36" position="-2.02 -0.66 0.03"></a-text>
     </a-entity>
 
-    <a-entity id="flask" position="-1.55 0 -4.4">
-      <a-cylinder radius="0.075" height="0.48" color="#c8e8e1" opacity="0.3" position="0 2.04 0" material="transparent: true; metalness: 0.1; roughness: 0.15"></a-cylinder>
-      <a-sphere radius="0.72" scale="1 1.08 0.82" color="#b9e6df" opacity="0.22" position="0 1.2 0" material="transparent: true; metalness: 0.16; roughness: 0.12; side: double"></a-sphere>
-      <a-sphere id="solution" radius="0.58" scale="1 0.57 0.78" color="#42afa4" opacity="0.78" position="0 0.83 0" material="transparent: true; roughness: 0.24; side: double; emissive: #35a696; emissiveIntensity: 0.7"></a-sphere>
-      <a-ring radius-inner="0.49" radius-outer="0.54" color="#d6f8ee" opacity="0.75" rotation="-90 0 0" position="0 1.15 0"></a-ring>
-      <a-cylinder radius="0.085" height="0.06" color="#d6f8ee" opacity="0.65" position="0 2.3 0" material="transparent: true"></a-cylinder>
-      <a-entity id="molecules"></a-entity>
-      <a-entity id="crystals"></a-entity>
-      <a-entity id="evaporation"></a-entity>
-      <a-text value="DISOLUCION" align="center" color="#a4e3d3" width="3.2" position="0 0.02 0.76"></a-text>
-      <a-text value="agua + soluto disuelto" align="center" color="#e3eee5" width="2.6" position="0 -0.22 0.76"></a-text>
+    <a-entity id="balance" position="-1.72 0.79 -4.32">
+      <a-box width="0.82" height="0.14" depth="0.72" color="#68736d" position="0 0.08 0" material="metalness: 0.35; roughness: 0.4"></a-box>
+      <a-box width="0.58" height="0.045" depth="0.48" color="#b9c4b9" position="0 0.18 0" material="metalness: 0.5; roughness: 0.32"></a-box>
+      <a-box width="0.42" height="0.13" depth="0.08" color="#263b35" position="0 0.08 0.39"></a-box>
+      <a-text id="scale-readout" value="0 g" align="center" color="#b6efc7" width="1.3" position="0 0.08 0.435"></a-text>
+      <a-cylinder radius="0.21" height="0.5" color="#cde9e4" opacity="0.3" position="0 0.49 0" mixin="glass-material"></a-cylinder>
+      <a-cylinder id="measured-water" radius="0.18" height="0.4" color="#6fbdc5" opacity="0.78" position="0 0.36 0" visible="false" material="transparent: true; roughness: 0.16"></a-cylinder>
+      <a-torus radius="0.21" radius-tubular="0.012" color="#e6f4eb" position="0 0.75 0" rotation="90 0 0" material="shader: flat"></a-torus>
     </a-entity>
+    <a-text value="BALANZA · 100 g" align="center" color="#d9e7dc" width="1.35" position="-1.72 0.84 -3.77"></a-text>
 
-    <a-entity id="lesson-panel" position="1.22 1.44 -4.55">
-      <a-plane width="2.65" height="2.38" color="#193b39" opacity="0.94" material="metalness: 0.08; roughness: 0.8"></a-plane>
-      <a-plane width="0.045" height="2.38" color="#e1ad59" position="-1.3 0 0.01"></a-plane>
-      <a-text value="PASO ACTUAL" align="left" color="#ffd17a" width="3" position="-1.12 0.88 0.02"></a-text>
-      <a-text id="stage-title" value="1  ·  Disolver y calentar" align="left" color="#fff1d0" width="3.1" position="-1.12 0.52 0.02"></a-text>
-      <a-text id="stage-copy" value="El calor ayuda a separar las partículas del soluto y distribuirlas entre las moléculas de agua." align="left" color="#e1eee5" width="2.85" wrap-count="35" line-height="54" position="-1.12 0.06 0.02"></a-text>
-      <a-text id="stage-count" value="ETAPA 1 DE 3" align="left" color="#8ed6c2" width="2.8" position="-1.12 -0.55 0.02"></a-text>
-    </a-entity>
-
-    <a-entity id="controls" position="0 1.2 -3.05">
-      <a-entity class="control" data-action="start" position="0.65 0 0">
-        <a-plane class="control-surface" width="1.55" height="0.48" color="#d69845" material="shader: flat"></a-plane>
-        <a-text value="INICIAR" align="center" color="#172a28" width="3" position="0 0 0.02"></a-text>
+    <a-entity id="heater" position="-0.35 0.79 -4.35">
+      <a-cylinder radius="0.63" height="0.15" color="#384642" position="0 0.075 0" material="metalness: 0.42; roughness: 0.38"></a-cylinder>
+      <a-cylinder radius="0.42" height="0.025" color="#d27d43" position="0 0.16 0" material="shader: flat; emissive: #7a3c1d"></a-cylinder>
+      <a-cylinder radius="0.51" height="0.65" color="#c4dbd7" opacity="0.28" position="0 0.51 0" material="transparent: true; metalness: 0.08; roughness: 0.12; side: double"></a-cylinder>
+      <a-cylinder id="pot-water" radius="0.45" height="0.42" color="#5ab6bf" opacity="0.78" position="0 0.36 0" visible="false" material="transparent: true; roughness: 0.12"></a-cylinder>
+      <a-torus radius="0.51" radius-tubular="0.025" color="#dbece7" position="0 0.84 0" rotation="90 0 0"></a-torus>
+      <a-cylinder radius="0.12" height="0.16" color="#b5d6d1" position="0 0.92 0" material="transparent: true; opacity: 0.3; side: double"></a-cylinder>
+      <a-cylinder id="pot-water-neck" radius="0.095" height="0.09" color="#5ab6bf" opacity="0.78" position="0 0.9 0" visible="false" material="transparent: true"></a-cylinder>
+      <a-entity id="heat-flame" visible="false">
+        <a-cone radius-bottom="0.19" radius-top="0.045" height="0.38" color="#ff9b4c" opacity="0.9" position="0 0.21 0" material="shader: flat; transparent: true"
+          animation="property: scale; from: 1 0.86 1; to: 0.9 1.1 0.9; dur: 340; direction: alternate; loop: true; easing: easeInOutSine"></a-cone>
       </a-entity>
-      <a-entity class="control" data-action="next" position="0.65 0 0" visible="false">
-        <a-plane class="control-surface" width="1.55" height="0.48" color="#438f80" material="shader: flat"></a-plane>
-        <a-text value="VER CRISTALES" align="center" color="#ffffff" width="2.7" position="0 0 0.02"></a-text>
+      <a-entity id="boiling-bubbles" visible="false">
+        <a-sphere radius="0.045" color="#e8ffff" position="-0.2 0.56 0.05" animation="property: position; to: -0.2 0.9 0.05; dur: 850; direction: alternate; loop: true; easing: easeInOutSine"></a-sphere>
+        <a-sphere radius="0.035" color="#e8ffff" position="0.13 0.5 -0.16" animation="property: position; to: 0.13 0.82 -0.16; dur: 720; delay: 160; direction: alternate; loop: true; easing: easeInOutSine"></a-sphere>
+        <a-sphere radius="0.05" color="#e8ffff" position="0.23 0.55 0.08" animation="property: position; to: 0.23 0.94 0.08; dur: 930; delay: 280; direction: alternate; loop: true; easing: easeInOutSine"></a-sphere>
       </a-entity>
-      <a-entity class="control" data-action="reset" position="2.45 0 0" visible="false">
-        <a-plane class="control-surface" width="1.05" height="0.48" color="#335550" material="shader: flat"></a-plane>
-        <a-text value="REINICIAR" align="center" color="#ffffff" width="1.55" position="0 0 0.02"></a-text>
+      <a-text id="temperature-readout" value="20 °C" align="center" color="#ffe2ad" width="1.4" position="0 1.11 0.54"></a-text>
+    </a-entity>
+    <a-text value="CALENTADOR" align="center" color="#d9e7dc" width="1.35" position="-0.35 0.84 -3.75"></a-text>
+
+    <a-entity id="sugar-bowl" position="1.83 0.79 -4.34">
+      <a-cylinder radius="0.42" height="0.055" color="#d9ded3" position="0 0.03 0" material="metalness: 0.12; roughness: 0.32"></a-cylinder>
+      <a-entity id="sugar-pile">
+        <a-sphere radius="0.12" color="#fffdf4" position="-0.13 0.14 0" material="roughness: 0.55"></a-sphere>
+        <a-sphere radius="0.15" color="#fffdf4" position="0 0.16 0.02" material="roughness: 0.55"></a-sphere>
+        <a-sphere radius="0.11" color="#f4f1e6" position="0.13 0.13 -0.02" material="roughness: 0.55"></a-sphere>
+      </a-entity>
+    </a-entity>
+    <a-text value="AZÚCAR · 280 g" align="center" color="#d9e7dc" width="1.25" position="1.83 0.84 -3.75"></a-text>
+
+    <a-entity id="seed-dish" position="0.5 0.79 -3.26">
+      <a-cylinder radius="0.24" height="0.045" color="#a9b8ad" position="0 0.025 0"></a-cylinder>
+      <a-cylinder radius="0.19" height="0.055" color="#6db5b9" opacity="0.72" position="0 0.07 0" material="transparent: true; roughness: 0.15"></a-cylinder>
+    </a-entity>
+    <a-entity id="sugar-plate" position="1.65 0.79 -3.2">
+      <a-cylinder radius="0.32" height="0.045" color="#d8ded4" position="0 0.02 0"></a-cylinder>
+      <a-sphere radius="0.12" color="#fffdf4" position="-0.08 0.09 0" material="roughness: 0.5"></a-sphere>
+      <a-sphere radius="0.1" color="#f3f0e6" position="0.08 0.08 0.03" material="roughness: 0.5"></a-sphere>
+      <a-sphere radius="0.08" color="#fffdf4" position="0.02 0.08 -0.08" material="roughness: 0.5"></a-sphere>
+    </a-entity>
+    <a-text value="AGUA PARA MOJAR" align="center" color="#cfe2d6" width="1.15" position="0.5 0.83 -2.94"></a-text>
+    <a-text value="AZÚCAR PARA SEMILLAS" align="center" color="#cfe2d6" width="1.15" position="1.65 0.83 -2.88"></a-text>
+
+    <a-entity id="glass" position="0.85 0.79 -4.35">
+      <a-cylinder radius="0.38" height="1.18" color="#dbf5f0" opacity="0.23" mixin="glass-material" position="0 0.59 0"></a-cylinder>
+      <a-cylinder radius="0.33" height="0.035" color="#d5e9e3" opacity="0.42" position="0 0.025 0" material="transparent: true; metalness: 0.2; roughness: 0.18"></a-cylinder>
+      <a-torus radius="0.38" radius-tubular="0.018" color="#e7f6f1" position="0 1.18 0" rotation="90 0 0"></a-torus>
+      <a-cylinder id="glass-solution" radius="0.33" height="0.92" color="#d8ad58" opacity="0.76" position="0 0.46 0" visible="false" material="transparent: true; roughness: 0.13"></a-cylinder>
+      <a-torus id="glass-rim" radius="0.38" radius-tubular="0.014" color="#f1faf5" position="0 1.18 0" rotation="90 0 0"></a-torus>
+    </a-entity>
+    <a-text value="VASO DE CRISTALIZACIÓN" align="center" color="#d9e7dc" width="1.35" position="0.85 0.84 -3.72"></a-text>
+
+    <a-entity id="glass-lid" position="0.85 2.12 -4.35" visible="false">
+      <a-cylinder radius="0.4" height="0.045" color="#dcece6" opacity="0.55" material="transparent: true; metalness: 0.25; roughness: 0.18"></a-cylinder>
+      <a-cylinder radius="0.11" height="0.075" color="#baccc4" position="0 0.055 0"></a-cylinder>
+    </a-entity>
+    <a-entity id="clip" position="0.85 1.99 -4.35" visible="false">
+      <a-box width="0.12" height="0.34" depth="0.1" color="#bf7950" position="-0.06 0 0" rotation="0 0 -7"></a-box>
+      <a-box width="0.12" height="0.34" depth="0.1" color="#d38f61" position="0.06 0 0" rotation="0 0 7"></a-box>
+      <a-cylinder radius="0.035" height="0.13" color="#e3b578" rotation="0 0 90" position="0 0.04 0.06"></a-cylinder>
+    </a-entity>
+    <a-entity id="skewer" position="-0.1 0.82 -3.2" rotation="0 0 90">
+      <a-cylinder radius="0.018" height="1.18" color="#c5915b" position="0 0.59 0" material="roughness: 0.65"></a-cylinder>
+      <a-cone radius-bottom="0.035" radius-top="0" height="0.12" color="#c5915b" position="0 1.21 0" rotation="180 0 0"></a-cone>
+      <a-entity id="seed-coating" visible="false">
+        <a-sphere radius="0.045" color="#fffdf4" position="0.02 0.28 0.015"></a-sphere>
+        <a-sphere radius="0.04" color="#f8f5eb" position="-0.02 0.43 -0.02"></a-sphere>
+        <a-sphere radius="0.05" color="#fffdf4" position="0.01 0.61 0.025"></a-sphere>
+        <a-sphere radius="0.04" color="#f8f5eb" position="-0.02 0.79 0.015"></a-sphere>
+      </a-entity>
+      <a-entity id="crystal-growth"></a-entity>
+    </a-entity>
+
+    <a-entity id="sugar-doses"></a-entity>
+    <a-text id="day-counter" value="DÍA 0 / 7" align="center" color="#ffe2ad" width="1.8" position="0.85 2.04 -3.9" visible="false"></a-text>
+
+    <a-entity id="controls">
+      <a-entity data-control="main" position="-1.16 1.55 -3.4">
+        <a-plane class="control-surface" width="1.02" height="0.34" color="#d69a4c" material="shader: flat"></a-plane>
+        <a-text id="main-label" value="MOJAR BROCHETA" align="center" color="#172923" width="1.55" position="0 0 0.02"></a-text>
+      </a-entity>
+      <a-entity data-control="day-toggle" position="-0.1 1.55 -3.4" visible="false">
+        <a-plane class="control-surface" width="0.82" height="0.34" color="#438f80" material="shader: flat"></a-plane>
+        <a-text id="day-toggle-label" value="INICIAR" align="center" color="#ffffff" width="1.3" position="0 0 0.02"></a-text>
+      </a-entity>
+      <a-entity data-control="day-step" position="0.88 1.55 -3.4" visible="false">
+        <a-plane class="control-surface" width="0.82" height="0.34" color="#438f80" material="shader: flat"></a-plane>
+        <a-text value="AVANZAR DÍA" align="center" color="#ffffff" width="1.3" position="0 0 0.02"></a-text>
+      </a-entity>
+      <a-entity data-control="reset" position="1.82 1.55 -3.4">
+        <a-plane class="control-surface" width="0.68" height="0.34" color="#40594e" material="shader: flat"></a-plane>
+        <a-text value="REINICIAR" align="center" color="#ffffff" width="1.1" position="0 0 0.02"></a-text>
       </a-entity>
     </a-entity>
 
-    <a-entity id="camera-rig" position="0 1.6 0">
-        <a-entity id="camera-rig" position="0 0 0">
-      <a-camera look-controls="pointerLockEnabled: false" wasd-controls="enabled: false">
+    <a-entity id="camera-rig" position="0 0 0">
+      <a-camera position="0 1.62 0" look-controls="pointerLockEnabled: false" wasd-controls="enabled: false">
         <a-entity id="interaction-cursor" cursor="fuse: false; rayOrigin: mouse" raycaster="objects: .hit; far: 12">
           <a-entity id="cursor-reticle" geometry="primitive: ring; radiusInner: 0.008; radiusOuter: 0.014"
             material="color: #fff1d0; shader: flat" position="0 0 -1" visible="false"
@@ -86,194 +161,8 @@
         </a-entity>
       </a-camera>
     </a-entity>
-    <a-entity id="right-controller" laser-controls="hand: right" raycaster="objects: .hit; far: 12" line="color: #ffd17a; opacity: 0.8"></a-entity>
+    <a-entity id="right-controller" laser-controls="hand: right" raycaster="objects: .hit; far: 12" line="color: #ffd17a; opacity: 0.85"></a-entity>
   </a-scene>
-
-  <script>
-    (() => {
-      const scene = document.querySelector('a-scene');
-      document.querySelectorAll('a-text').forEach((text) => {
-        text.setAttribute('font', 'https://cdn.aframe.io/fonts/Exo2Bold.fnt');
-      });
-      const solution = document.querySelector('#solution');
-      const stageTitle = document.querySelector('#stage-title');
-      const stageCopy = document.querySelector('#stage-copy');
-      const stageCount = document.querySelector('#stage-count');
-      const crystalGroup = document.querySelector('#crystals');
-      const evaporationGroup = document.querySelector('#evaporation');
-      const molecules = document.querySelector('#molecules');
-      const heatFlame = document.querySelector('#heat-flame');
-      const interactionCursor = document.querySelector('#interaction-cursor');
-      const cursorReticle = document.querySelector('#cursor-reticle');
-      const rightController = document.querySelector('#right-controller');
-      const startControl = document.querySelector('[data-action="start"]');
-      const nextControl = document.querySelector('[data-action="next"]');
-      const resetControl = document.querySelector('[data-action="reset"]');
-      let stage = 1;
-      let timers = [];
-      let evaporationComplete = false;
-      let simulationRunning = false;
-
-      const lessons = [
-        ['1  ·  Disolver y calentar', 'El calor ayuda a separar las partículas del soluto y distribuirlas entre las moléculas de agua.'],
-        ['2  ·  Sobresaturar', 'Al evaporarse parte del agua, la disolución ya no puede mantener todo el soluto disuelto.'],
-        ['3  ·  Cristalizar', 'Al apagar el calor, el soluto se ordena alrededor de núcleos y forma cristales sólidos.']
-      ];
-
-      function updateControls() {
-        const startVisible = stage === 1 && !simulationRunning;
-        const nextVisible = stage === 2 && evaporationComplete;
-        const resetVisible = stage > 1;
-        startControl.setAttribute('visible', startVisible);
-        nextControl.setAttribute('visible', nextVisible);
-        resetControl.setAttribute('visible', resetVisible);
-        startControl.querySelector('.control-surface').classList.toggle('hit', startVisible);
-        nextControl.querySelector('.control-surface').classList.toggle('hit', nextVisible);
-        resetControl.querySelector('.control-surface').classList.toggle('hit', resetVisible);
-      }
-
-      updateControls();
-
-      function setStage(value) {
-        stage = Math.max(1, Math.min(3, value));
-        stageTitle.setAttribute('value', lessons[stage - 1][0]);
-        stageCopy.setAttribute('value', lessons[stage - 1][1]);
-        stageCount.setAttribute('value', `ETAPA ${stage} DE 3`);
-        updateControls();
-      }
-
-      function clearSimulation() {
-        timers.forEach(clearTimeout);
-        timers = [];
-        evaporationComplete = false;
-        simulationRunning = false;
-        heatFlame.setAttribute('visible', false);
-        crystalGroup.replaceChildren();
-        evaporationGroup.replaceChildren();
-        solution.setAttribute('scale', '1 0.57 0.78');
-        solution.setAttribute('opacity', '0.78');
-        solution.setAttribute('color', '#42afa4');
-        molecules.querySelectorAll('[data-solute]').forEach((molecule) => {
-          molecule.removeAttribute('animation__dissolve');
-          molecule.setAttribute('position', molecule.dataset.startPosition);
-        });
-        setStage(1);
-      }
-
-      function addVapor() {
-        for (let index = 0; index < 12; index += 1) {
-          const x = (Math.random() - 0.5) * 0.58;
-          const z = (Math.random() - 0.5) * 0.46;
-          const vapor = document.createElement('a-sphere');
-          vapor.setAttribute('radius', '0.035');
-          vapor.setAttribute('color', '#d9f4e9');
-          vapor.setAttribute('opacity', '0.68');
-          vapor.setAttribute('position', `${x} ${1.28 + Math.random() * 0.35} ${z}`);
-          vapor.setAttribute('animation', `property: position; to: ${x} ${2.7 + Math.random() * 0.45} ${z}; dur: ${2200 + Math.random() * 1200}; easing: easeOutQuad`);
-          vapor.setAttribute('animation__fade', 'property: material.opacity; to: 0; dur: 2600; easing: linear');
-          evaporationGroup.appendChild(vapor);
-        }
-      }
-
-      function growCrystals() {
-        const cluster = [
-          [-0.22, 1.03, 0.43, 0.2], [-0.04, 1.05, 0.5, 0.26], [0.16, 1.03, 0.42, 0.19],
-          [0.04, 1.23, 0.47, 0.22], [-0.16, 1.25, 0.37, 0.15], [0.23, 1.24, 0.44, 0.14],
-          [-0.31, 1.1, 0.32, 0.12], [0.31, 1.1, 0.34, 0.13], [0, 1.4, 0.42, 0.13]
-        ];
-        cluster.forEach(([x, y, z, size], index) => {
-          const crystal = document.createElement('a-entity');
-          crystal.setAttribute('geometry', `primitive: octahedron; radius: ${size}`);
-          crystal.setAttribute('mixin', 'crystal-material');
-          crystal.setAttribute('position', `${x} ${y} ${z}`);
-          crystal.setAttribute('scale', '0.001 0.001 0.001');
-          crystal.setAttribute('animation', `property: scale; from: 0.001 0.001 0.001; to: 1 1 1; dur: ${900 + index * 110}; delay: ${index * 120}; easing: easeOutElastic`);
-          crystalGroup.appendChild(crystal);
-        });
-      }
-
-      function startCrystallization() {
-        clearSimulation();
-        simulationRunning = true;
-        heatFlame.setAttribute('visible', true);
-        molecules.querySelectorAll('[data-solute]').forEach((molecule, index) => {
-          const angle = index * 2.4;
-          const radius = 0.16 + (index % 3) * 0.09;
-          const target = `${Math.cos(angle) * radius} ${0.62 + (index % 4) * 0.13} ${0.25 + Math.sin(angle) * radius * 0.35}`;
-          molecule.setAttribute('animation__dissolve', `property: position; to: ${target}; dur: 1350; easing: easeInOutSine`);
-        });
-        updateControls();
-        timers.push(setTimeout(() => {
-          setStage(2);
-          addVapor();
-          timers.push(setTimeout(() => {
-            solution.setAttribute('scale', '1 0.34 0.78');
-            solution.setAttribute('opacity', '0.56');
-            simulationRunning = false;
-            evaporationComplete = true;
-            heatFlame.setAttribute('visible', false);
-            updateControls();
-          }, 2300));
-        }, 1450));
-      }
-
-      document.querySelectorAll('#controls .control').forEach((control) => {
-        control.addEventListener('mouseenter', () => {
-          const plane = control.querySelector('a-plane');
-          plane.setAttribute('material', 'emissive', '#275b50');
-        });
-        control.addEventListener('mouseleave', () => {
-          control.querySelector('a-plane').removeAttribute('material', 'emissive');
-        });
-        control.addEventListener('click', () => {
-          const action = control.dataset.action;
-          if (action === 'start') startCrystallization();
-          if (action === 'next') {
-            if (stage === 2 && evaporationComplete) {
-              timers.forEach(clearTimeout);
-              timers = [];
-              setStage(3);
-              solution.setAttribute('color', '#72c6bb');
-              growCrystals();
-            }
-          }
-          if (action === 'reset') clearSimulation();
-        });
-      });
-
-      rightController.addEventListener('triggerdown', () => {
-        const intersection = rightController.components.raycaster?.intersections
-          .find(({ object }) => object.el?.classList.contains('hit'));
-        intersection?.object.el.closest('.control')?.emit('click', {}, true);
-      });
-
-      for (let index = 0; index < 18; index += 1) {
-        const molecule = document.createElement('a-sphere');
-        const angle = index * 2.399;
-        const isSolute = index % 3 === 0;
-        const radius = isSolute ? 0.08 + (index % 3) * 0.025 : 0.12 + (index % 5) * 0.075;
-        molecule.setAttribute('radius', isSolute ? '0.055' : '0.045');
-        molecule.setAttribute('material', `shader: flat; color: ${isSolute ? '#ffd17a' : '#d9f4e9'}; opacity: 0.98`);
-        const position = isSolute
-          ? `${Math.cos(angle) * 0.17} ${0.68 + (index % 3) * 0.055} ${0.24 + Math.sin(angle) * 0.1}`
-          : `${Math.cos(angle) * radius * 0.65} ${0.68 + (index % 4) * 0.14} ${0.26 + Math.sin(angle) * radius * 0.18}`;
-        molecule.setAttribute('position', position);
-        molecule.dataset.startPosition = position;
-        if (isSolute) molecule.dataset.solute = 'true';
-        molecules.appendChild(molecule);
-      }
-
-      scene.addEventListener('enter-vr', () => {
-        interactionCursor.setAttribute('cursor', 'rayOrigin', 'entity');
-        interactionCursor.setAttribute('cursor', 'fuse', true);
-        cursorReticle.setAttribute('visible', true);
-      });
-      scene.addEventListener('exit-vr', () => {
-        interactionCursor.setAttribute('cursor', 'rayOrigin', 'mouse');
-        interactionCursor.setAttribute('cursor', 'fuse', false);
-        cursorReticle.setAttribute('visible', false);
-      });
-    })();
-  </script>
+  <script src="cristalizacion.js"></script>
 </body>
 </html>
