@@ -237,6 +237,17 @@
 			onclick="show_primera_1();"
 		/>
 
+		<hotspot
+			name="spot3"
+			style="pisada"
+			url="images/pisada.png"
+			ath="0" 
+			atv="11.54342605462306"
+			onclick="openurl('aframe/cristalizacion.html','_self');"
+			fov="90"
+			visible="true"
+		/>
+
 	</scene>
 	
 	<scene name="scene_segunda" title="segunda" onstart="" thumburl="panos/segunda.tiles/thumb.jpg" lat="18.48786111" lng="-69.96341667" alt="29.90" heading="0.0">
